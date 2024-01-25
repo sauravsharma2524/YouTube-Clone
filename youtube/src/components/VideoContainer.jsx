@@ -1,12 +1,11 @@
-import React from 'react'
-import VideoCard from './VideoCard'
+import VideoCard from "./VideoCard";
 
 const VideoContainer = () => {
   return (
     <div>
-      <VideoCard/>
+      <VideoCard />
     </div>
-  )
-}
+  );
+};
 
-export default VideoContainer
+export default VideoContainer;
