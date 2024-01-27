@@ -1,9 +1,26 @@
 import VideoCard from "./VideoCard";
+import { useEffect, useState } from "react";
+import { YOUTUBE_VIDEOS_API } from "../utils.js/constants";
 
 const VideoContainer = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  const getVideos = async () => {
+    const data = await fetch(YOUTUBE_VIDEOS_API);
+    const json = await data.json();
+    setVideos(json?.items);
+
+    console.log("data:", json?.items);
+  };
+
   return (
-    <div>
-      <VideoCard />
+    <div className="flex flex-wrap w-[80vw] " >
+      {videos.map((info) => <VideoCard key={info.id} info={info} /> )}
+      
     </div>
   );
 };
