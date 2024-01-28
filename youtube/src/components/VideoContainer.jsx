@@ -18,7 +18,7 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="flex flex-wrap w-[80vw] " >
+    <div className="flex justify-center items-center flex-wrap  " >
       {videos.map((info) => <VideoCard key={info.id} info={info} /> )}
       
     </div>
@@ -26,3 +26,4 @@ const VideoContainer = () => {
 };
 
 export default VideoContainer;
+ 
