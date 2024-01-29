@@ -3,16 +3,35 @@ import { Provider } from "react-redux";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import store from "../utils.js/store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import WatchPage from "./WatchPage";
+import VideoContainer from "./VideoContainer";
+import Body from "./Body";
 
 function App() {
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body/> ,
+      children: [
+        {
+          path: "/",
+          element: <MainContainer />,
+        },
+        {
+          path: "/watch",
+          element: <WatchPage />,
+        },
+      ],
+    },
+  ]);
+
   return (
-    <Provider store={store} >
+    <Provider store={store}>
       <>
         <Navbar />
-        <div className="flex">
-          <Sidebar />
-          <MainContainer />
-        </div>
+        {/* <Body/> */}
+        <RouterProvider router={appRouter} />
       </>
     </Provider>
   );
